@@ -33,6 +33,6 @@ class PlayerController {
 
     @PostMapping(path = "/login")
     ResponseEntity<String> loginUser() {
-        return ResponseEntity.ok("DONE");
+        return ResponseEntity.ok("{ HTTP Status : 200, \nMessage : User logged in }");
     }
 }
