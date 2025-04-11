@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
 public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
     @Override
-    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
             throws IOException, ServletException {
 
         response.setStatus(HttpServletResponse.SC_OK);
         PrintWriter writer = response.getWriter();
-        writer.println("{ HTTP Status : 200, \nMessage : Logged out }");
+        writer.println(String.format("Player %s has logged out!", auth.getName()));
     }
 }

@@ -28,24 +28,17 @@ public class QuestController {
     }
 
     @GetMapping(path = "/{player_name}")
-    ResponseEntity<List<QuestDTO>> getAllQuest(@PathVariable("player_name") String player_name) {
+    ResponseEntity<List<QuestDTO>> getAllQuest(@PathVariable("player_name") String player_name)
+            throws PlayerNotExistException {
         List<QuestDTO> allQuestModel = new ArrayList<>();
-        try {
-            questService.getAllQuestModel(player_name, allQuestModel);
-        } catch (PlayerNotExistException e) {
-            e.printStackTrace();
-        }
+        questService.getAllQuestModel(player_name, allQuestModel);
         return ResponseEntity.ok(allQuestModel);
     }
 
     @PostMapping(path = "/{player_name}")
     ResponseEntity<String> addNewQuest(@PathVariable("player_name") String player_name,
-            @Valid @RequestBody QuestDTO questDTO) {
-        try {
-            questService.addQuestModel("russel", questDTO);
-        } catch (PlayerNotExistException e) {
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok("It probably succeed...");
+            @Valid @RequestBody QuestDTO questDTO) throws PlayerNotExistException {
+        questService.addQuestModel(player_name, questDTO);
+        return ResponseEntity.ok("Quest/s successfully added!");
     }
 }

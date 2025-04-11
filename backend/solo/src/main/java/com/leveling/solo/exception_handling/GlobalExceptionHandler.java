@@ -31,6 +31,6 @@ public class GlobalExceptionHandler {
         PlayerNotExistExceptionBody playerNotExistExceptionBody = new PlayerNotExistExceptionBody(
                 e.getMessage(), ZonedDateTime.now(ZoneId.of("Z")), HttpStatus.BAD_REQUEST);
 
-        return ResponseEntity.badRequest().body(playerNotExistExceptionBody);
+        return new ResponseEntity<PlayerNotExistExceptionBody>(playerNotExistExceptionBody, HttpStatus.BAD_REQUEST);
     }
 }

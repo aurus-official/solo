@@ -1,7 +1,7 @@
 package com.leveling.solo.configuration;
 
+import com.leveling.solo.handler.CustomLoginAuthenticationEntryPoint;
 import com.leveling.solo.handler.CustomLogoutSuccessHandler;
-import com.leveling.solo.handler.LoginAuthenticationEntryPoint;
 import com.leveling.solo.player.PlayerValidationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +17,17 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 public class SecurityConfiguration {
 
     private final PlayerValidationService playerValidationService;
-    private final LoginAuthenticationEntryPoint loginAuthenticationEntryPoint;
+    private final CustomLoginAuthenticationEntryPoint loginAuthenticationEntryPoint;
     private final CustomLogoutSuccessHandler logoutHandler;
 
     @Autowired
     SecurityConfiguration(PlayerValidationService playerValidationService,
-            LoginAuthenticationEntryPoint loginAuthenticationEntryPoint, CustomLogoutSuccessHandler logoutHandler) {
+            CustomLoginAuthenticationEntryPoint loginAuthenticationEntryPoint,
+            CustomLogoutSuccessHandler logoutHandler) {
         this.playerValidationService = playerValidationService;
         this.loginAuthenticationEntryPoint = loginAuthenticationEntryPoint;
         this.logoutHandler = logoutHandler;

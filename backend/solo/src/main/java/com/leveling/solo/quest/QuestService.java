@@ -24,8 +24,10 @@ public class QuestService {
 
     void getAllQuestModel(String player_username, List<QuestDTO> allQuestModels) throws PlayerNotExistException {
         Optional<PlayerModel> playerModel = validatePlayerExists(player_username);
+
         Optional<List<QuestModel>> allMatchedQuestModels = questRepository
                 .getAllQuestModelByPlayerId(playerModel.get().getId());
+
         allMatchedQuestModels.ifPresent(questModels -> questModels.forEach(questModel -> {
             QuestDTO questDTO = new QuestDTO();
             questDTO.setQuestType(questModel.getQuestType());

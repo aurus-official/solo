@@ -5,11 +5,9 @@
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    background-image: radial-gradient(
-        136.65% 136.65% at 43.59% 2.02%,
-        #252525 0%,
-        #0a0a0a 73%
-    );
+    background-image: radial-gradient(136.65% 136.65% at 43.59% 2.02%,
+            #252525 0%,
+            #0a0a0a 73%);
 }
 
 .division-line {
@@ -46,8 +44,8 @@
     height: auto;
 }
 
-.interactable-container > div > input {
-    width: 70%;
+.interactable-container>div>input {
+    width: 65%;
     height: 2.8125em;
     background-color: transparent;
     border: 0.1em solid #d9d9d9;
@@ -60,12 +58,12 @@
     content: "";
     position: absolute;
     top: 50%;
-    left: 17.5%;
+    left: 20%;
     aspect-ratio: 1/1;
     background: url("./../assets/username-icon.png") no-repeat center;
     background-size: 100% 100%;
     aspect-ratio: 1/1;
-    width: calc(0.8em + 1vw);
+    width: calc(0.6em + 1vw);
     transform: translateY(-50%);
 }
 
@@ -73,12 +71,12 @@
     content: "";
     position: absolute;
     top: 50%;
-    left: 17.5%;
+    left: 20%;
     aspect-ratio: 1/1;
     background: url("./../assets/password-icon.png") no-repeat center;
     background-size: 100% 100%;
     aspect-ratio: 1/1;
-    width: calc(0.8em + 1vw);
+    width: calc(0.6em + 1vw);
     transform: translateY(-50%);
 }
 
@@ -90,16 +88,21 @@
     aspect-ratio: 1/1;
     background: url("./../assets/confirm-password-icon.png") no-repeat center;
     background-size: 100% 100%;
-    width: calc(1em + 1vw);
+    width: calc(0 + 1vw);
+
+    .interactable-container>div>* {
+        font-size: 1.05rem;
+    }
+
     transform: translateY(-50%);
 }
 
-.interactable-container > div > input::placeholder {
+.interactable-container>div>input::placeholder {
     color: white;
     opacity: 75%;
 }
 
-.interactable-container > button {
+.interactable-container>button {
     width: 20%;
     height: 2.8125em;
     border-radius: 0;
@@ -107,16 +110,11 @@
     cursor: pointer;
 }
 
-.interactable-container > div {
+.interactable-container>div {
     height: auto;
     position: relative;
     display: flex;
     justify-content: center;
-}
-
-.interactable-container > div > *,
-.interactable-container > button {
-    font-size: 1.05rem;
 }
 
 .display-container {
@@ -128,7 +126,7 @@
 
 .panel1 {
     aspect-ratio: auto;
-    width: calc(auto + 1vw);
+    width: calc(40.625em + 1vw);
     height: auto;
 }
 
@@ -138,24 +136,22 @@
     position: relative;
 }
 
-.status-logs-container > p {
+.status-logs-container>p {
     height: auto;
     padding: 0.75em 1em 0.75em 8.5%;
-    width: 70%;
+    width: 65%;
     border: solid;
     background-color: #f9d0d5;
     border: 0.1em solid #d9d9d9;
     color: #ca182f;
     box-sizing: border-box;
-    /* padding-left: 8.5%; */
 }
 
 .status-logs-container::before {
     content: "";
     position: absolute;
     top: 50%;
-    left: 17.5%;
-    /* left: 5%; */
+    left: 20%;
     aspect-ratio: 1/1;
     background: url("./../assets/cross-icon.png") no-repeat center;
     background-size: 100% 100%;

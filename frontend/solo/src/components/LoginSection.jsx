@@ -1,7 +1,7 @@
 import "./../styles/LoginSection.css";
 import Logo from "./../assets/logo.svg";
 import Panel1 from "./../assets/panel1.png";
-import { useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 async function queryLogin({ queryKey }) {
@@ -89,6 +89,17 @@ export default function LoginSection({ handleLoginState }) {
         });
     };
 
+    useEffect(() => {
+        document.addEventListener("keypress", (event) => {
+            if (event.key == "Enter") {
+                event.preventDefault();
+                document.getElementById("login-button").click();
+            }
+
+            return document.removeEventListener("keypress");
+        });
+    }, []);
+
     return (
         <div className="whole-window-container">
             <div className="display-container">
@@ -100,11 +111,7 @@ export default function LoginSection({ handleLoginState }) {
                 <div className="interactable-container">
                     {!(status == "pending") && (
                         <div className="status-logs-container">
-                            <p>
-                                {data.ok
-                                    ? "You've logged in."
-                                    : "Bad credentials."}
-                            </p>
+                            <p>{!data.ok && data.body}</p>
                         </div>
                     )}
                     <div className="username-container">
@@ -126,7 +133,11 @@ export default function LoginSection({ handleLoginState }) {
                             type="password"
                         />
                     </div>
-                    <button onClick={handleClick} type="button">
+                    <button
+                        id="login-button"
+                        onClick={handleClick}
+                        type="button"
+                    >
                         Login
                     </button>
                 </div>

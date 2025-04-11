@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationEn
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
+public class CustomLoginAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 
     @Override
     public void commence(
@@ -24,9 +24,9 @@ public class LoginAuthenticationEntryPoint extends BasicAuthenticationEntryPoint
         String msg = "";
 
         if (authEx instanceof BadCredentialsException) {
-            msg = "Bad credentials";
+            msg = "bad credentials";
         } else if (authEx instanceof InsufficientAuthenticationException) {
-            msg = "No credentials";
+            msg = "no credentials";
         } else {
             msg = authEx.getMessage();
         }
@@ -35,7 +35,7 @@ public class LoginAuthenticationEntryPoint extends BasicAuthenticationEntryPoint
 
         PrintWriter writer = response.getWriter();
         writer.println(
-                String.format("{ HTTP Status : 401, \nMessage : %s }", msg, authEx.toString()));
+                String.format("Player has %s!", msg, authEx.toString()));
     }
 
     @Override
