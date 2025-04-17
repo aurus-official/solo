@@ -31,8 +31,6 @@ public class CustomLoginAuthenticationEntryPoint extends BasicAuthenticationEntr
             msg = authEx.getMessage();
         }
 
-        System.out.println("\n" + authEx.toString() + "\n");
-
         PrintWriter writer = response.getWriter();
         writer.println(
                 String.format("Player has %s!", msg, authEx.toString()));

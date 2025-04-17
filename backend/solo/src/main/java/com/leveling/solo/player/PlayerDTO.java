@@ -1,23 +1,31 @@
 package com.leveling.solo.player;
 
 import jakarta.validation.constraints.AssertTrue;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class PlayerDTO {
-    @NotNull(message = "Username is required")
+    @NotEmpty(message = "Username is required")
     private String username;
 
-    @NotNull(message = "Password is required")
+    @NotEmpty(message = "Password is required")
     @Size(min = 8, max = 16, message = "Length should be more than 8 and less than 17 characters")
     private String password;
 
-    @NotNull(message = "Confirmed password is required")
-    private String confirmedPassword;
+    @NotEmpty(message = "Confirm password is required")
+    private String confirmPassword;
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 
     @AssertTrue(message = "Passwords aren't matched")
     private boolean isPasswordMatched() {
-        return password.compareTo(confirmedPassword) == 0;
+        return password.compareTo(confirmPassword) == 0;
     }
 
     public String getUsername() {
@@ -34,14 +42,6 @@ public class PlayerDTO {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getConfirmedPassword() {
-        return confirmedPassword;
-    }
-
-    public void setConfirmedPassword(String confirmedPassword) {
-        this.confirmedPassword = confirmedPassword;
     }
 
 }

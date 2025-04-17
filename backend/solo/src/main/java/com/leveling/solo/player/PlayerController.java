@@ -21,11 +21,6 @@ class PlayerController {
         this.playerService = playerService;
     }
 
-    @PostMapping(path = "/logoutredirect")
-    ResponseEntity<String> logoutUser(Authentication auth) {
-        return ResponseEntity.ok(String.format("Player %s has logged out!", auth.getName()));
-    }
-
     @PostMapping(path = "/register")
     ResponseEntity<String> registerUser(@Valid @RequestBody PlayerDTO newPlayer) {
         playerService.addUser(newPlayer);

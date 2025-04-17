@@ -5,9 +5,11 @@
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    background-image: radial-gradient(136.65% 136.65% at 43.59% 2.02%,
-            #252525 0%,
-            #0a0a0a 73%);
+    background-image: radial-gradient(
+        136.65% 136.65% at 43.59% 2.02%,
+        #252525 0%,
+        #0a0a0a 73%
+    );
 }
 
 .division-line {
@@ -44,7 +46,7 @@
     height: auto;
 }
 
-.interactable-container>div>input {
+.interactable-container > div > input {
     width: 65%;
     height: 2.8125em;
     background-color: transparent;
@@ -84,25 +86,22 @@
     content: "";
     position: absolute;
     top: 50%;
-    left: 17.5%;
+    left: 20%;
     aspect-ratio: 1/1;
     background: url("./../assets/confirm-password-icon.png") no-repeat center;
     background-size: 100% 100%;
-    width: calc(0 + 1vw);
-
-    .interactable-container>div>* {
-        font-size: 1.05rem;
-    }
-
+    aspect-ratio: 1/1;
+    width: calc(0.6em + 1vw);
     transform: translateY(-50%);
 }
 
-.interactable-container>div>input::placeholder {
+.interactable-container > div > input::placeholder {
     color: white;
     opacity: 75%;
 }
 
-.interactable-container>button {
+.interactable-container > .login-button,
+.interactable-container > .register-button {
     width: 20%;
     height: 2.8125em;
     border-radius: 0;
@@ -110,7 +109,7 @@
     cursor: pointer;
 }
 
-.interactable-container>div {
+.interactable-container > div {
     height: auto;
     position: relative;
     display: flex;
@@ -130,24 +129,28 @@
     height: auto;
 }
 
-.status-logs-container {
+.status-log-container-error,
+.status-log-container-success {
     display: flex;
     justify-content: center;
     position: relative;
 }
 
-.status-logs-container>p {
+.status-log-container-error > p,
+.status-log-container-success > p {
     height: auto;
     padding: 0.75em 1em 0.75em 8.5%;
     width: 65%;
-    border: solid;
-    background-color: #f9d0d5;
-    border: 0.1em solid #d9d9d9;
-    color: #ca182f;
     box-sizing: border-box;
+    border: 0.1em solid #d9d9d9;
 }
 
-.status-logs-container::before {
+.status-log-container-error > p {
+    background-color: #f9d0d5;
+    color: #ca182f;
+}
+
+.status-log-container-error::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -158,4 +161,33 @@
     aspect-ratio: 1/1;
     width: calc(0.8em + 1vw);
     transform: translateY(-50%);
+}
+
+.status-log-container-success > p {
+    background-color: #e2ffe7;
+    color: #006110;
+}
+
+.status-log-container-success::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    aspect-ratio: 1/1;
+    background: url("./../assets/check-icon.png") no-repeat center;
+    background-size: 100% 100%;
+    aspect-ratio: 1/1;
+    width: calc(0.8em + 1vw);
+    transform: translateY(-50%);
+}
+
+.register-link,
+.login-link {
+    height: auto;
+    color: white;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
 }
